@@ -2,6 +2,9 @@ use std::fmt::Debug;
 use std::rc::Rc;
 use std::cell::RefCell;
 
+use std::collections::LinkedList;
+use std::collections::VecDeque;
+
 // Node structure for the linked list
 type NodeRef<T> = Option<Rc<RefCell<Node<T>>>>;
 
@@ -114,4 +117,32 @@ fn main() {
     }
     
     println!("Final queue size: {}", queue.get_size());
+
+    let mut queue: VecDeque<i32> = VecDeque::new();
+    
+    // Add elements (enqueue)
+    queue.push_back(1);
+    queue.push_back(2);
+    queue.push_back(3);
+    
+    // Remove elements (dequeue)
+    if let Some(front) = queue.pop_front() {
+        println!("VecDeque: Dequeued: {}", front);
+    }
+    
+    // Peek at the front element
+    if let Some(front) = queue.front() {
+        println!("VecDeque: Front element: {}", front);
+    }
+
+    let mut queue: LinkedList<i32> = LinkedList::new();
+    
+    // Add elements
+    queue.push_back(1);
+    queue.push_back(2);
+    
+    // Remove elements
+    if let Some(front) = queue.pop_front() {
+        println!("LinkedList: Dequeued: {}", front);
+    }
 }
