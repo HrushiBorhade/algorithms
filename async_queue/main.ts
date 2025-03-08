@@ -1,5 +1,3 @@
-import { createLanguageService } from "typescript";
-
 class AsyncQueueNode {
   task?: () => Promise<void>;
   next?: AsyncQueueNode;
